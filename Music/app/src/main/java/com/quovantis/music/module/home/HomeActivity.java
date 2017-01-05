@@ -27,13 +27,13 @@ public class HomeActivity extends BaseActivity implements IHomeMVP.View,
         ViewPager.OnPageChangeListener {
 
     @BindView(R.id.view_pager)
-    protected ViewPager mViewPager;
+    ViewPager mViewPager;
     @BindView(R.id.playlist_tab)
-    protected View mPlaylistView;
+    View mPlaylistView;
     @BindView(R.id.folders_tab)
-    protected View mFolderView;
+    View mFolderView;
     @BindView(R.id.tracks_tab)
-    protected View mTracksView;
+    View mTracksView;
     private HomeAdapter mPagerAdapter;
     private IHomeMVP.Presenter mHomePresenter;
     private boolean mIsBackPressedCalled;
@@ -66,6 +66,7 @@ public class HomeActivity extends BaseActivity implements IHomeMVP.View,
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(3);
         mViewPager.addOnPageChangeListener(this);
+
     }
 
     private void addAllFragments() {

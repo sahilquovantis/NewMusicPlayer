@@ -2,11 +2,13 @@ package com.quovantis.music.models;
 
 import java.io.Serializable;
 
+import io.realm.RealmObject;
+
 /**
  * Song Model contains all information about song
  */
 
-public class SongsModel implements Serializable{
+public class SongsModel extends RealmObject implements Serializable{
     private String mSongID;
     private String mSongTitle;
     private String mSongArtist;
