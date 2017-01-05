@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * Interface Folders Fragment (MVP)
  */
-
-public interface IFolders {
+ interface IFolders {
     interface View {
         void onGettingFolders(List<FoldersModel> foldersList);
 

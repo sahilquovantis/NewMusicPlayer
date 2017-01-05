@@ -19,6 +19,12 @@
         <item name="android:layout_width">@dimen/size_circular_song_thumbnail</item>
     </style>
 
+    <style name="DialogTextStyle">
+        <item name="android:textColor">@color/colorSongName</item>
+        <item name="android:textSize">@dimen/size_x_small</item>
+        <item name="android:padding">@dimen/dp_10</item>
+    </style>
+
     <style name="AppMusicControlsImageView">
         <item name="android:padding">@dimen/space_music_controls_music_layout</item>
         <item name="android:layout_height">wrap_content</item>
@@ -57,12 +63,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
     </style>
+
     <style name="AppRecyclerView">
         <item name="android:scrollbars">vertical</item>
         <item name="android:background">@color/colorWhite</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">match_parent</item>
     </style>
+
     <style name="AppTextViewEllipsize">
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">marquee</item>

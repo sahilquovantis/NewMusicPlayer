@@ -48,7 +48,7 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final FoldersModel model = mFoldersList.get(position);
+        FoldersModel model = mFoldersList.get(position);
         List<SongsModel> songsList = model.getSongs();
         holder.mDirectoryNameTV.setText(model.getDirectory());
         String tracks;
@@ -58,12 +58,6 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
             tracks = songsList.size() + " Tracks";
         holder.mTotalTracksTV.setText(tracks);
         Uri uri = ContentUris.withAppendedId(AppConstants.ALBUM_URI, model.getAlbumId());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.onFolderClicked(model);
-            }
-        });
         Glide.with(mContext)
                 .load(uri)
                 .asBitmap()
@@ -77,7 +71,7 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
         return mFoldersList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         @BindView(R.id.tv_directory_name)
         TextView mDirectoryNameTV;
@@ -89,6 +83,20 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            mListener.onFolderClicked(mFoldersList.get(getAdapterPosition()));
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            FoldersModel model = mFoldersList.get(getAdapterPosition());
+            mListener.onOptionsClicked(model.getSongs(), model.getDirectory());
+            return true;
         }
     }
 
@@ -97,5 +105,7 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
      */
     interface IOnFolderClickedListener {
         void onFolderClicked(FoldersModel folder);
+
+        void onOptionsClicked(List<SongsModel> list, String title);
     }
 }

@@ -18,4 +18,7 @@
     <string name="next_song">Next Song</string>
     <string name="_00_00">00:00</string>
     <string name="empty_current_queue">There are no songs to play</string>
+    <string name="clear_now_playing_list_and_play">Clear queue and play</string>
+    <string name="add_to_now_playing_list">Add to current queue</string>
+    <string name="add_to_playlist">Add to playlist</string>
 </resources>

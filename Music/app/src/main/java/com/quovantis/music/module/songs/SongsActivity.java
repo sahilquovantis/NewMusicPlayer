@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import com.quovantis.music.R;
 import com.quovantis.music.constants.IntentKeys;
+import com.quovantis.music.dialogs.OptionsDialog;
 import com.quovantis.music.helper.MusicHelper;
 import com.quovantis.music.models.FoldersModel;
 import com.quovantis.music.models.SongsModel;
@@ -117,6 +118,13 @@ public class SongsActivity extends BaseActivity implements ISongs.View, SongsAda
     public void onSongClicked(List<SongsModel> songsList, int currentSongPos) {
         MusicHelper.getInstance().setCurrentSongsQueue(songsList, currentSongPos);
         mPresenter.playSong();
+    }
+
+    @Override
+    public void onSongOptionClick(SongsModel model) {
+        List<SongsModel> list = new ArrayList<>(1);
+        list.add(model);
+        mPresenter.showOptionsDialog(list, model.getSongTitle());
     }
 
     @Override

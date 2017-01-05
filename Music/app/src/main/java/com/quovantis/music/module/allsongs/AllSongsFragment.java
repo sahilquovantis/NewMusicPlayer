@@ -9,7 +9,6 @@ import android.widget.ProgressBar;
 
 import com.quovantis.music.R;
 import com.quovantis.music.helper.MusicHelper;
-import com.quovantis.music.interfaces.ISongClickListener;
 import com.quovantis.music.models.SongsModel;
 import com.quovantis.music.module.base.fragment.BaseFragment;
 
@@ -31,7 +30,7 @@ public class AllSongsFragment extends BaseFragment implements ISongs.View, Songs
     private SongsAdapter mAdapter;
     private List<SongsModel> mSongsList;
     private IGetSongsListener mListener;
-    private ISongClickListener mSongListener;
+
     public AllSongsFragment() {
     }
 
@@ -43,7 +42,6 @@ public class AllSongsFragment extends BaseFragment implements ISongs.View, Songs
     @Override
     protected void initVariables() {
         mListener = (IGetSongsListener) getActivity();
-        mSongListener = (ISongClickListener) getActivity();
         showProgress();
         mSongsList = new ArrayList<>();
         mAdapter = new SongsAdapter(mSongsList, getActivity(), this);
@@ -87,10 +85,22 @@ public class AllSongsFragment extends BaseFragment implements ISongs.View, Songs
     @Override
     public void onSongClicked(List<SongsModel> songsList, int currentSongPos) {
         MusicHelper.getInstance().setCurrentSongsQueue(songsList, currentSongPos);
-        mSongListener.playSong();
+        mListener.playSong();
     }
+
+    @Override
+    public void onSongOptionClick(SongsModel model) {
+        List<SongsModel> list = new ArrayList<>(1);
+        list.add(model);
+        mListener.showOptionsDialog(list, model.getSongTitle());
+    }
+
 
     public interface IGetSongsListener {
         void getSongs();
+
+        void playSong();
+
+        void showOptionsDialog(List<SongsModel> list, String title);
     }
 }

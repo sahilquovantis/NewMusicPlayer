@@ -2,6 +2,10 @@ package com.quovantis.music.module.base.activity;
 
 import android.graphics.Bitmap;
 
+import com.quovantis.music.models.SongsModel;
+
+import java.util.List;
+
 /**
  * Interface Base Activity (MVP)
  */
@@ -34,5 +38,7 @@ interface IBaseMusic {
         void seekTo(int pos);
 
         void toggleRequest();
+
+        void showOptionsDialog(List<SongsModel> songsList,String title);
     }
 }

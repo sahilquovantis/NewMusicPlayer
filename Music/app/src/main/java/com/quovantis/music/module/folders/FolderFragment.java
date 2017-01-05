@@ -11,6 +11,7 @@ import com.quovantis.music.R;
 import com.quovantis.music.appcontroller.AppActionController;
 import com.quovantis.music.constants.IntentKeys;
 import com.quovantis.music.models.FoldersModel;
+import com.quovantis.music.models.SongsModel;
 import com.quovantis.music.module.base.fragment.BaseFragment;
 import com.quovantis.music.module.songs.SongsActivity;
 
@@ -87,5 +88,15 @@ public class FolderFragment extends BaseFragment implements IFolders.View, Folde
                 .setBundle(bundle)
                 .build()
                 .execute();
+    }
+
+    @Override
+    public void onOptionsClicked(List<SongsModel> list, String title) {
+        IFolderClickedListener listener = (IFolderClickedListener) getActivity();
+        listener.showOptionsDialog(list, title);
+    }
+
+    public interface IFolderClickedListener {
+        void showOptionsDialog(List<SongsModel> list, String title);
     }
 }

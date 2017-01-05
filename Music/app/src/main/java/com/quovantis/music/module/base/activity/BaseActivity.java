@@ -158,7 +158,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseMus
         mMusicLayoutRL.setVisibility(View.GONE);
         if (this instanceof CurrentQueueActivity) {
             Toast.makeText(this, getString(R.string.empty_current_queue), Toast.LENGTH_LONG).show();
-            onBackPressed();
+            finish();
         }
     }
 

@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.quovantis.music.R;
 import com.quovantis.music.constants.IntentKeys;
-import com.quovantis.music.interfaces.ISongClickListener;
 import com.quovantis.music.models.FoldersModel;
 import com.quovantis.music.models.SongsModel;
 import com.quovantis.music.module.allsongs.AllSongsFragment;
@@ -23,7 +22,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HomeActivity extends BaseActivity implements IHomeMVP.View, ISongClickListener, AllSongsFragment.IGetSongsListener, ViewPager.OnPageChangeListener {
+public class HomeActivity extends BaseActivity implements IHomeMVP.View,
+        AllSongsFragment.IGetSongsListener, FolderFragment.IFolderClickedListener,
+        ViewPager.OnPageChangeListener {
 
     @BindView(R.id.view_pager)
     protected ViewPager mViewPager;
@@ -156,6 +157,11 @@ public class HomeActivity extends BaseActivity implements IHomeMVP.View, ISongCl
     @Override
     public void playSong() {
         mPresenter.playSong();
+    }
+
+    @Override
+    public void showOptionsDialog(List<SongsModel> list, String title) {
+        mPresenter.showOptionsDialog(list, title);
     }
 
     @Override

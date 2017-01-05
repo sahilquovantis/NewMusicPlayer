@@ -12,20 +12,25 @@ import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaControllerCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
+import com.quovantis.music.dialogs.OptionsDialog;
 import com.quovantis.music.helper.LoggerHelper;
 import com.quovantis.music.helper.MusicHelper;
+import com.quovantis.music.models.SongsModel;
 import com.quovantis.music.music.MusicService;
+
+import java.util.List;
 
 /**
  * Base Activity Presenter, here binding and unbinding of service takes place.
  */
 
-class BaseMusicPresenter implements IBaseMusic.Presenter, ServiceConnection {
+class BaseMusicPresenter implements IBaseMusic.Presenter, ServiceConnection, OptionsDialog.IOptionsDialogListener {
 
     private IBaseMusic.View mView;
     private Context mContext;
     private boolean mIsBounded;
     private MediaControllerCompat mMediaController;
+    private OptionsDialog mDialog;
 
     BaseMusicPresenter(IBaseMusic.View mView, Context context) {
         this.mView = mView;
@@ -175,6 +180,26 @@ class BaseMusicPresenter implements IBaseMusic.Presenter, ServiceConnection {
                     state == PlaybackStateCompat.STATE_BUFFERING) {
                 pauseSong();
             }
+        }
+    }
+
+    @Override
+    public void showOptionsDialog(List<SongsModel> songsList, String title) {
+        mDialog = new OptionsDialog(mContext, songsList, this);
+        mDialog.show();
+        mDialog.setMessage(title);
+    }
+
+    @Override
+    public void onAddToPlaylist(List<SongsModel> songsList) {
+
+    }
+
+    @Override
+    public void onAddToQueue(List<SongsModel> songsList, boolean shouldClearQueue, boolean shouldPlayingSongs) {
+        MusicHelper.getInstance().addSongsToQueue(songsList, shouldClearQueue, shouldPlayingSongs);
+        if (shouldPlayingSongs) {
+            playSong();
         }
     }
 

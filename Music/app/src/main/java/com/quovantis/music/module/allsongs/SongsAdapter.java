@@ -18,6 +18,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Adapter for displaying songs
@@ -41,7 +42,6 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final int pos = position;
         SongsModel model = mSongsList.get(position);
         holder.mSongNameTV.setText(model.getSongTitle());
         holder.mSongSingerTV.setText(model.getSongArtist());
@@ -50,12 +50,6 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
                 .asBitmap()
                 .placeholder(R.drawable.music)
                 .into(holder.mSongThumbnailIV);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.onSongClicked(mSongsList, pos);
-            }
-        });
     }
 
     @Override
@@ -63,7 +57,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
         return mSongsList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.tv_song_name)
         TextView mSongNameTV;
         @BindView(R.id.tv_song_singer)
@@ -74,10 +68,27 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @OnClick(R.id.iv_song_options)
+        void onOptionsClick(ImageView view) {
+            switch (view.getId()) {
+                case R.id.iv_song_options:
+                    mListener.onSongOptionClick(mSongsList.get(getAdapterPosition()));
+                    break;
+            }
+        }
+
+        @Override
+        public void onClick(View view) {
+            mListener.onSongClicked(mSongsList, getAdapterPosition());
         }
     }
 
     public interface IOnSongClickedListener {
         void onSongClicked(List<SongsModel> songsList, int currentSongPos);
+
+        void onSongOptionClick(SongsModel model);
     }
 }
