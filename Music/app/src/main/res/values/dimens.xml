@@ -1,0 +1,24 @@
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Text Size-->
+    <dimen name="size_x_small">12sp</dimen>
+    <dimen name="size_small">16sp</dimen>
+    <dimen name="size_medium">18sp</dimen>
+
+    <!-- Home Activity -->
+    <dimen name="tab_layout_bg_highlighter">5dp</dimen>
+    <dimen name="space_songs_row">10dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="space_song_name_and_singer">5dp</dimen>
+    <dimen name="divider">1dp</dimen>
+    <dimen name="folder_view_height">150dp</dimen>
+    <dimen name="space_between_folders">10dp</dimen>
+    <dimen name="space_between_song_total_tracks">2dp</dimen>
+    <dimen name="size_action_overflow">40dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="thumbnail_border_width">1dp</dimen>
+    <dimen name="space_music_layout_description">10dp</dimen>
+    <dimen name="space_thumbnail_music_layout">10dp</dimen>
+</resources>

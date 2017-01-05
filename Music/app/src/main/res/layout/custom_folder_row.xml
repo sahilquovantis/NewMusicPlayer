@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/folder_view_height"
+    android:layout_margin="@dimen/space_between_folders"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_folder_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/folder_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/music" />
+
+    <TextView
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparent" />
+
+    <TextView
+        android:layout_alignParentRight="true"
+        android:layout_width="80dp"
+        android:layout_height="5dp"
+        android:background="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/tv_directory_name"
+        style="@style/AppTextViewEllipsize"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/size_medium"
+        tools:text="@string/directory_name" />
+
+    <TextView
+        android:id="@+id/tv_total_tracks"
+        style="@style/AppTextViewWrap"
+        android:layout_below="@id/tv_directory_name"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/size_x_small"
+        tools:text="@string/dummy_tracks" />
+</RelativeLayout>

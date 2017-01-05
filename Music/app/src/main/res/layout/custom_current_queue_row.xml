@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/iv_song_options"
+            style="@style/AppActionOverflow"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/action_overflow"
+            android:padding="@dimen/dp_10" />
+
+        <es.claucookie.miniequalizerlibrary.EqualizerView
+            android:id="@+id/equalizer_view"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_toLeftOf="@+id/iv_song_options"
+            android:layout_toStartOf="@+id/iv_song_options"
+            android:visibility="gone"
+            custom:foregroundColor="@color/colorAccent" />
+
+        <LinearLayout
+            android:id="@+id/ll_song_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_toLeftOf="@+id/equalizer_view"
+            android:layout_toStartOf="@+id/equalizer_view"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_song_name"
+                style="@style/AppTextViewEllipsize"
+                android:layout_marginLeft="@dimen/space_song_name_and_singer"
+                android:layout_marginRight="@dimen/space_song_name_and_singer"
+                android:paddingBottom="@dimen/space_song_name_and_singer"
+                android:textColor="@color/colorSongName"
+                android:textSize="@dimen/size_small"
+                tools:text="@string/song_name" />
+
+            <TextView
+                android:id="@+id/tv_song_artist"
+                style="@style/AppTextViewEllipsize"
+                android:layout_marginLeft="@dimen/space_song_name_and_singer"
+                android:layout_marginRight="@dimen/space_song_name_and_singer"
+                android:textColor="@color/colorSongSinger"
+                android:textSize="@dimen/size_x_small"
+                tools:text="@string/song_singer" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:background="@color/colorDivider" />
+</LinearLayout>

@@ -1,0 +1,98 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+    </style>
+
+    <style name="AppRelativeLayoutMatchParent">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="AppCircularImage">
+        <item name="android:layout_height">@dimen/size_circular_song_thumbnail</item>
+        <item name="android:layout_width">@dimen/size_circular_song_thumbnail</item>
+    </style>
+
+    <style name="AppMusicControlsImageView">
+        <item name="android:padding">@dimen/space_music_controls_music_layout</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="AppMusicControlsNotification">
+        <item name="android:padding">@dimen/space_music_controls_notification</item>
+        <item name="android:layout_height">@dimen/size_music_controls_notification</item>
+        <item name="android:layout_width">@dimen/size_music_controls_notification</item>
+    </style>
+
+    <style name="AppActionOverflow">
+        <item name="android:contentDescription">@string/action_overflow</item>
+        <item name="android:layout_width">@dimen/size_action_overflow</item>
+        <item name="android:layout_height">@dimen/size_action_overflow</item>
+        <item name="android:src">@drawable/action_overflow_white</item>
+    </style>
+
+    <style name="AppToolbar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="AppTextViewWrap">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="AppProgressBar">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    <style name="AppRecyclerView">
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <style name="AppTextViewEllipsize">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:state_selected">true</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+    <!-- Home Activity -->
+    <style name="AppTabLayout">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="AppTabLayoutTextView">
+        <item name="android:textSize">@dimen/size_medium</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="AppViewPager">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <dimen name="size_circular_song_thumbnail">50dp</dimen>
+    <dimen name="space_music_controls_music_layout">10dp</dimen>
+    <dimen name="size_music_controls_notification">30dp</dimen>
+    <dimen name="space_music_controls_notification">5dp</dimen>
+</resources>
