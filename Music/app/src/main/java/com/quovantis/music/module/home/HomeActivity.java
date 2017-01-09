@@ -1,5 +1,6 @@
 package com.quovantis.music.module.home;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -10,6 +11,7 @@ import com.quovantis.music.R;
 import com.quovantis.music.constants.IntentKeys;
 import com.quovantis.music.models.FoldersModel;
 import com.quovantis.music.models.SongsModel;
+import com.quovantis.music.models.UserPlaylistModel;
 import com.quovantis.music.module.allsongs.AllSongsFragment;
 import com.quovantis.music.module.base.activity.BaseActivity;
 import com.quovantis.music.module.folders.FolderFragment;
@@ -24,7 +26,7 @@ import butterknife.OnClick;
 
 public class HomeActivity extends BaseActivity implements IHomeMVP.View,
         AllSongsFragment.IGetSongsListener, FolderFragment.IFolderClickedListener,
-        ViewPager.OnPageChangeListener {
+        ViewPager.OnPageChangeListener, PlaylistFragment.IPlaylistOptionsListener {
 
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
@@ -179,5 +181,12 @@ public class HomeActivity extends BaseActivity implements IHomeMVP.View,
     @Override
     protected void updateEqualizerState(int state) {
 
+    }
+
+    @Override
+    public void onShowPlaylistOptionsDialog(UserPlaylistModel model) {
+        if (mPresenter != null) {
+            mPresenter.showPlaylistOptionsDialog(model);
+        }
     }
 }

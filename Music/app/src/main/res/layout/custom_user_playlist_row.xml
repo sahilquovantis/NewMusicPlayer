@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingStart="@dimen/dp_10">
+
+        <com.quovantis.music.customviews.CircleImageView
+            android:id="@+id/iv_song_thumbnail"
+            style="@style/AppCircularImage"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/folder_background"
+            android:src="@drawable/music"
+            app:civ_border_color="@color/colorDivider"
+            app:civ_border_width="1dp" />
+
+        <ImageView
+            android:id="@+id/iv_next_arrow"
+            style="@style/AppActionOverflow"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/action_overflow"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/nextarrow"
+            android:tint="@color/colorGray" />
+
+        <LinearLayout
+            android:id="@+id/ll_song_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toEndOf="@+id/iv_song_thumbnail"
+            android:layout_toLeftOf="@+id/iv_next_arrow"
+            android:layout_toRightOf="@+id/iv_song_thumbnail"
+            android:layout_toStartOf="@+id/iv_next_arrow"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_user_playlist_name"
+                style="@style/AppTextViewEllipsize"
+                android:layout_marginLeft="@dimen/space_song_name_and_singer"
+                android:layout_marginRight="@dimen/space_song_name_and_singer"
+                android:paddingBottom="@dimen/space_song_name_and_singer"
+                android:textColor="@color/colorSongName"
+                android:textSize="@dimen/size_small"
+                tools:text="@string/song_name" />
+
+            <TextView
+                android:id="@+id/tv_playlist_tracks"
+                style="@style/AppTextViewEllipsize"
+                android:layout_marginLeft="@dimen/space_song_name_and_singer"
+                android:layout_marginRight="@dimen/space_song_name_and_singer"
+                android:textColor="@color/colorSongSinger"
+                android:textSize="@dimen/size_x_small"
+                tools:text="@string/song_singer" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_10"
+        android:background="@color/colorDivider" />
+</LinearLayout>

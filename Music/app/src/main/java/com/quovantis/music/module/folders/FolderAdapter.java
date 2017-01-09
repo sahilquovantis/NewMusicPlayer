@@ -2,6 +2,8 @@ package com.quovantis.music.module.folders;
 
 import android.content.ContentUris;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +14,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.quovantis.music.R;
 import com.quovantis.music.constants.AppConstants;
 import com.quovantis.music.models.FoldersModel;
 import com.quovantis.music.models.SongsModel;
+import com.wonderkiln.blurkit.BlurKit;
 
 import java.util.List;
 
@@ -61,7 +65,6 @@ class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder> {
         Glide.with(mContext)
                 .load(uri)
                 .asBitmap()
-                //.transform(new BlurTransformation(mContext, 99))
                 .error(R.drawable.music)
                 .into(holder.mThumbnailIV);
     }

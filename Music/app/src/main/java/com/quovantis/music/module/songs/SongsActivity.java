@@ -10,9 +10,8 @@ import android.widget.ProgressBar;
 
 import com.quovantis.music.R;
 import com.quovantis.music.constants.IntentKeys;
-import com.quovantis.music.dialogs.OptionsDialog;
 import com.quovantis.music.helper.MusicHelper;
-import com.quovantis.music.models.FoldersModel;
+import com.quovantis.music.models.FolderAndPlaylistClickedModel;
 import com.quovantis.music.models.SongsModel;
 import com.quovantis.music.module.allsongs.ISongs;
 import com.quovantis.music.module.allsongs.SongsAdapter;
@@ -62,10 +61,10 @@ public class SongsActivity extends BaseActivity implements ISongs.View, SongsAda
         if (intent != null) {
             Bundle extras = intent.getExtras();
             if (extras != null) {
-                FoldersModel folder = (FoldersModel) extras.getSerializable(IntentKeys.FOLDER_MODEL_KEY);
-                if (folder != null) {
-                    mTitle = folder.getDirectory();
-                    onGettingSongs(folder.getSongs());
+                FolderAndPlaylistClickedModel model = extras.getParcelable(IntentKeys.FOLDER_AND_PLAYLIST_CLICKED_MODEL_KEY);
+                if (model != null) {
+                    mTitle = model.getTitle();
+                    onGettingSongs(model.getSongsList());
                 }
             }
         }
@@ -82,6 +81,9 @@ public class SongsActivity extends BaseActivity implements ISongs.View, SongsAda
 
     @Override
     public void onGettingSongs(List<SongsModel> songsList) {
+        if (songsList == null) {
+            return;
+        }
         hideProgress();
         mSongsList.clear();
         mSongsList.addAll(songsList);

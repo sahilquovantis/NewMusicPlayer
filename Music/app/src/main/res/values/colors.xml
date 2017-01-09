@@ -7,7 +7,8 @@
     <color name="colorTabLayout">#FFEB3B</color>
     <color name="colorSongName">#212121</color>
     <color name="colorSongSinger">#9e9e9e</color>
-    <color name="colorDivider">#509e9e9e</color>
+    <color name="colorGray">#9e9e9e</color>
+    <color name="colorDivider">#209e9e9e</color>
     <color name="colorTransparent">#85000000</color>
     <color name="colorBlack">#000000</color>
     <color name="colorHighlight">#9e9e9e</color>

@@ -1,5 +1,6 @@
 package com.quovantis.music.module.base.activity;
 
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -20,10 +21,10 @@ import android.widget.Toast;
 import com.quovantis.music.R;
 import com.quovantis.music.appcontroller.AppActionController;
 import com.quovantis.music.constants.IntentKeys;
+import com.quovantis.music.dialogs.CustomProgressDialog;
 import com.quovantis.music.helper.LoggerHelper;
 import com.quovantis.music.module.currentqueue.CurrentQueueActivity;
 import com.quovantis.music.music.MusicService;
-import com.quovantis.music.utility.Utils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -49,6 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseMus
     @BindView(R.id.iv_play_pause)
     ImageView mPlayPauseIV;
     protected IBaseMusic.Presenter mPresenter;
+    private CustomProgressDialog mDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -159,6 +161,21 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseMus
         if (this instanceof CurrentQueueActivity) {
             Toast.makeText(this, getString(R.string.empty_current_queue), Toast.LENGTH_LONG).show();
             finish();
+        }
+    }
+
+    @Override
+    public void showProgressDialog(String message) {
+        mDialog = new CustomProgressDialog(this);
+        mDialog.show();
+        mDialog.setMessage(message);
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        if (mDialog != null) {
+            mDialog.dismiss();
+            mDialog = null;
         }
     }
 

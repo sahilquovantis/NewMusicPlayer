@@ -21,4 +21,21 @@
     <string name="clear_now_playing_list_and_play">Clear queue and play</string>
     <string name="add_to_now_playing_list">Add to current queue</string>
     <string name="add_to_playlist">Add to playlist</string>
+    <string name="select_playlist">Select Playlist</string>
+    <string name="create_new">Create New</string>
+    <string name="create_playlist">Create Playlist</string>
+    <string name="playlist">Playlist</string>
+    <string name="cancel">Cancel</string>
+    <string name="create">Create</string>
+    <string name="processing">Processing ...</string>
+    <string name="creating_playlist">Creating playlist ...</string>
+    <string name="playlist_created">Playlist updated</string>
+    <string name="error_in_playlist_creating">Something went wrong</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="updating_playlist">Updating playlist ...</string>
+    <string name="rename_playlist">Rename</string>
+    <string name="delete_playlist">Delete</string>
+    <string name="playlist_deleted">Playlist deleted</string>
+    <string name="playlist_renamed">Playlist renamed</string>
+    <string name="renaming_playlist">Renaming playlist ...</string>
 </resources>

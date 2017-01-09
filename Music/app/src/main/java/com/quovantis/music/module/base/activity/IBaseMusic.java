@@ -3,6 +3,7 @@ package com.quovantis.music.module.base.activity;
 import android.graphics.Bitmap;
 
 import com.quovantis.music.models.SongsModel;
+import com.quovantis.music.models.UserPlaylistModel;
 
 import java.util.List;
 
@@ -18,6 +19,10 @@ interface IBaseMusic {
         void showMusicLayout();
 
         void hideMusicLayout();
+
+        void showProgressDialog(String message);
+
+        void hideProgressDialog();
     }
 
     interface Presenter {
@@ -39,6 +44,22 @@ interface IBaseMusic {
 
         void toggleRequest();
 
-        void showOptionsDialog(List<SongsModel> songsList,String title);
+        void showOptionsDialog(List<SongsModel> songsList, String title);
+
+        void showPlaylistOptionsDialog(UserPlaylistModel model);
+    }
+
+    interface Interactor {
+        void createNewPlaylist(List<SongsModel> songsList, String name, IBaseMusic.Interactor.Listener listener);
+
+        void addSongsToExistingPlaylist(List<SongsModel> songsList, UserPlaylistModel model, IBaseMusic.Interactor.Listener listener);
+
+        void deletePlaylist(UserPlaylistModel model, IBaseMusic.Interactor.Listener listener);
+
+        void renamePlaylist(final UserPlaylistModel model, final String newName, final IBaseMusic.Interactor.Listener listener);
+
+        interface Listener {
+            void onSuccess(boolean isSuccess, String msg);
+        }
     }
 }

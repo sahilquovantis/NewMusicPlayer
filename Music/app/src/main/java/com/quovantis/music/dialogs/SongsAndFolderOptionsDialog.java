@@ -10,11 +10,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.quovantis.music.R;
+import com.quovantis.music.interfaces.IOptionsDialogListener;
 import com.quovantis.music.models.SongsModel;
 
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -22,12 +22,12 @@ import butterknife.OnClick;
  * This class creates custom dialog which is used for menu options for folders and songs.
  */
 
-public class OptionsDialog extends AlertDialog {
+public class SongsAndFolderOptionsDialog extends AlertDialog {
 
     private List<SongsModel> mSongsList;
     private IOptionsDialogListener mListener;
 
-    public OptionsDialog(Context context, List<SongsModel> songsList, IOptionsDialogListener listener) {
+    public SongsAndFolderOptionsDialog(Context context, List<SongsModel> songsList, IOptionsDialogListener listener) {
         super(context);
         mSongsList = songsList;
         mListener = listener;
@@ -71,26 +71,5 @@ public class OptionsDialog extends AlertDialog {
             window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
-    }
-
-    /**
-     * Listener for clicking options items
-     */
-    public interface IOptionsDialogListener {
-        /**
-         * This method will add the songs to the user playlist
-         *
-         * @param songsList Songs List which will be added to the playlist
-         */
-        void onAddToPlaylist(List<SongsModel> songsList);
-
-        /**
-         * This method will add songs to the current queue
-         *
-         * @param songsList          Songs List which will be added to the queue
-         * @param shouldClearQueue   If true, this will clear current queue
-         * @param shouldPlayingSongs If true, this will play this songs list
-         */
-        void onAddToQueue(List<SongsModel> songsList, boolean shouldClearQueue, boolean shouldPlayingSongs);
     }
 }

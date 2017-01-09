@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_main_layout_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            fontPath="fonts/robotoregular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/dp_10"
+            android:text="@string/select_playlist"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/size_small" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_playlist"
+            style="@style/AppRecyclerView"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/AppProgressBar"
+            android:layout_margin="@dimen/dp_10" />
+
+        <LinearLayout
+            android:id="@+id/ll_create_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
+
+            <com.quovantis.music.customviews.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/add" />
+
+            <TextView
+                style="@style/AppTextViewWrap"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/dp_10"
+                android:text="@string/create_new"
+                android:textColor="@color/colorGray" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

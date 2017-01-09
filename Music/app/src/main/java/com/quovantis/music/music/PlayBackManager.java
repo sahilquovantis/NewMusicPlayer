@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import android.support.v4.media.MediaMetadataCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
+import android.view.KeyEvent;
 
 import com.quovantis.music.constants.IntentKeys;
 import com.quovantis.music.helper.MusicHelper;
@@ -149,7 +150,7 @@ class PlayBackManager implements Playback.Callback {
 
         @Override
         public boolean onMediaButtonEvent(Intent mediaButtonEvent) {
-            return super.onMediaButtonEvent(mediaButtonEvent);
+            return handleMediaButtonRequest(mediaButtonEvent);
         }
 
         @Override
@@ -157,6 +158,41 @@ class PlayBackManager implements Playback.Callback {
             super.onSeekTo(pos);
             mPlayback.seekTo((int) pos);
         }
+    }
+
+    private boolean handleMediaButtonRequest(Intent intent) {
+        if (Intent.ACTION_MEDIA_BUTTON.equals(intent.getAction())) {
+            KeyEvent event = (KeyEvent) intent.getParcelableExtra(Intent.EXTRA_KEY_EVENT);
+            if (event != null && event.getAction() == KeyEvent.ACTION_DOWN) {
+                switch (event.getKeyCode()) {
+                    case KeyEvent.KEYCODE_MEDIA_PLAY: {
+                        handlePlayRequest();
+                        break;
+                    }
+                    case KeyEvent.KEYCODE_MEDIA_PAUSE: {
+                        handlePauseRequest();
+                        break;
+                    }
+
+                    case KeyEvent.KEYCODE_HEADSETHOOK: {
+                        int state = mPlayback.getState();
+                        if (state == PlaybackStateCompat.STATE_PAUSED) {
+                            handlePlayRequest();
+                        } else if (state == PlaybackStateCompat.STATE_PLAYING) {
+                            handlePauseRequest();
+                        }
+                        break;
+                    }
+                    case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
+                        handleSkipToPreviousRequest();
+                        break;
+                    case KeyEvent.KEYCODE_MEDIA_NEXT:
+                        handleSkipToNextRequest();
+                        break;
+                }
+            }
+        }
+        return true;
     }
 
     @Override

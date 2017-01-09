@@ -16,15 +16,24 @@
         android:src="@drawable/music" />
 
     <TextView
-        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorTransparent" />
+        android:background="@color/colorTransparent"
+        android:visibility="gone" />
+
+
+    <com.wonderkiln.blurkit.BlurLayout
+        xmlns:blurkit="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/blurLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        blurkit:blk_blurRadius="1"
+        blurkit:blk_fps="60" />
 
     <TextView
-        android:layout_alignParentRight="true"
         android:layout_width="80dp"
         android:layout_height="5dp"
+        android:layout_alignParentRight="true"
         android:background="@color/colorWhite" />
 
     <TextView

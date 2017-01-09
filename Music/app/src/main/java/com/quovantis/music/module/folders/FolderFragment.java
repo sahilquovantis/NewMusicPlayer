@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import com.quovantis.music.R;
 import com.quovantis.music.appcontroller.AppActionController;
 import com.quovantis.music.constants.IntentKeys;
+import com.quovantis.music.models.FolderAndPlaylistClickedModel;
 import com.quovantis.music.models.FoldersModel;
 import com.quovantis.music.models.SongsModel;
 import com.quovantis.music.module.base.fragment.BaseFragment;
@@ -80,8 +81,11 @@ public class FolderFragment extends BaseFragment implements IFolders.View, Folde
 
     @Override
     public void onFolderClicked(FoldersModel folder) {
+        FolderAndPlaylistClickedModel model = new FolderAndPlaylistClickedModel();
+        model.setSongsList(folder.getSongs());
+        model.setTitle(folder.getDirectory());
         Bundle bundle = new Bundle();
-        bundle.putSerializable(IntentKeys.FOLDER_MODEL_KEY, folder);
+        bundle.putParcelable(IntentKeys.FOLDER_AND_PLAYLIST_CLICKED_MODEL_KEY, model);
         new AppActionController.Builder()
                 .from(getActivity())
                 .setTargetActivity(SongsActivity.class)
